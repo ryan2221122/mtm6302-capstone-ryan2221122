@@ -1,0 +1,88 @@
+/* 1. Reset and Space Background */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #05070a; 
+    color: white;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    overflow: hidden;
+}
+
+/* 2. Navbar - Dark blue bar at the top */
+.navbar {
+    background-color: #1a1f35; /* Matching your mockup's top bar */
+    padding: 15px 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 0.9rem;
+    text-transform: lowercase;
+}
+
+/* 3. The Hero & Moon Focal Point */
+.hero {
+    height: calc(100vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Starry background texture */
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+.moon-container {
+    width: 400px; /* Size of your moon focal point */
+    height: 400px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg');
+    background-size: cover;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+}
+
+.hero-content {
+    text-align: center;
+}
+
+/* 4. Typography and Button */
+.sub-text {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 35px;
+    background-color: #d1d1d1; /* Light grey button from mockup */
+    color: #1a1f35;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* 5. Responsiveness for the Rubric */
+@media (max-width: 600px) {
+    .moon-container {
+        width: 300px;
+        height: 300px;
+    }
+    .sub-text {
+        font-size: 1.2rem;
+    }
+}
