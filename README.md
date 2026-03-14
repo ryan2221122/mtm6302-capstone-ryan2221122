@@ -38,3 +38,24 @@ Git Navigation: I initially had trouble running Git commands because I was in th
 File Structure: I accidentally created a folder named style.css instead of a file, which prevented the CSS from loading. I corrected this by deleting the directory and creating a proper .css file.
 
 UI Matching: It was a challenge to get the text perfectly centered inside the moon image while maintaining responsiveness. I solved this by using Flexbox on the moon container.
+
+# Space Journey - Capstone Part 4
+
+## 🚀 Mission Overview
+Space Journey is a Single Page Application (SPA) designed to give users an interactive experience exploring moon missions using real-time data from NASA.
+
+## 🛠️ Part 4 - Functional Report
+
+### Steps Taken
+1. **Branching:** Created a `part-4` branch to move from a static prototype to a functional JS application.
+2. **SPA Architecture:** Modified `index.html` to use a `<main id="app-container">` shell, allowing content to swap without page refreshes.
+3. **Event Handling:** Implemented "Start the Journey" logic using `addEventListener` to maintain clean separation of concerns.
+4. **Data Integration:** Integrated the **NASA APOD API** using the `fetch()` method with `async/await` for asynchronous data retrieval.
+
+### Resources Used
+- NASA Planetary Astronomy Picture of the Day (APOD) API.
+- MDN Web Docs for Fetch API and DOM Manipulation.
+
+### Challenges & Solutions
+- **The 429 Error Challenge:** During testing, the NASA API key (DEMO_KEY) hit a rate limit, returning a 429 error and causing a `TypeError` in the code.
+- **The Solution:** I implemented a **Try/Catch fail-safe**. If the API fails, the app now automatically switches to a "Local Mission Log" backup, ensuring the user experience never breaks.
