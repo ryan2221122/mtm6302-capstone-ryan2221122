@@ -1,33 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Journey | Explore the Moon</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APOD Surge — NASA Astronomy Picture of the Day</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500&family=Space+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-links">
-            <a href="#" id="home-link">Home</a>
-            <a href="#" id="about-link">About</a>
-            <a href="#" id="explore-link">Explore</a>
+  <!-- ══ HERO SECTION ══ -->
+  <section class="hero">
+    <h1 class="hero-title">APOD SURGE</h1>
+    <p class="hero-sub">NASA ASTRONOMY PICTURE OF THE DAY</p>
+
+    <!-- Search bar -->
+    <div class="search-wrap">
+      <div class="search-bar">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="text"
+          id="dateInput"
+          class="search-input"
+          placeholder="Travel to a date: YYYY-MM-DD"
+          maxlength="10"
+          spellcheck="false"
+        />
+      </div>
+      <div class="quick-btns">
+        <button class="pill-btn" id="todayBtn">Today</button>
+        <button class="pill-btn" id="randomBtn">✦ Random</button>
+      </div>
+    </div>
+
+    <!-- Laptop / screen frame -->
+    <div class="screen-frame">
+      <div class="screen-bar">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+      </div>
+      <div class="screen-inner" id="screenInner">
+        <div class="screen-state" id="loaderState">
+          <div class="spinner"></div>
+          <span>Scanning the cosmos…</span>
         </div>
-    </nav>
+        <div class="screen-state" id="errorState" hidden>
+          <span class="state-icon">⚠</span>
+          <p id="errorMsg">Could not load APOD. Please try again.</p>
+        </div>
+        <!-- media injected here -->
+      </div>
+    </div>
 
-    <main id="app-container">
-        <section class="hero">
-            <div class="moon-container">
-                <div class="hero-content">
-                    <p class="sub-text">explore the moon</p>
-                    <a href="#" class="cta-button" id="start-btn">Start the Journey</a>
-                </div>
-            </div>
-        </section>
-    </main>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- ══ INFO CARD ══ -->
+  <section class="info-section" id="infoSection" hidden>
+    <div class="info-card">
 
+      <div class="info-top">
+        <div class="info-text-block">
+          <h2 class="info-title" id="infoTitle"></h2>
+          <time class="info-date" id="infoDate"></time>
+          <p class="info-copyright" id="infoCopyright"></p>
+        </div>
+        <button class="fav-btn" id="favBtn">
+          <svg class="heart-icon" id="heartIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span id="favBtnLabel">ADD TO FAVOURITES</span>
+        </button>
+      </div>
+
+      <div class="info-explanation-wrap">
+        <p class="info-explanation" id="infoExplanation"></p>
+        <div class="explanation-fade" id="explanationFade"></div>
+      </div>
+      <button class="read-toggle" id="readToggle" hidden>Read more ↓</button>
+
+      <a class="hd-link" id="hdLink" href="#" target="_blank" rel="noopener" hidden>View in HD ↗</a>
+
+    </div>
+  </section>
+
+  <!-- ══ FAVOURITES ══ -->
+  <section class="favs-section">
+    <h3 class="favs-heading">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+      YOUR FAVOURITES
+    </h3>
+
+    <p class="favs-empty" id="favsEmpty">No favourites yet — explore and save a picture!</p>
+
+    <div class="favs-grid" id="favsGrid"></div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer">
+    <p>Powered by <a href="https://api.nasa.gov" target="_blank" rel="noopener">NASA Open APIs</a> &nbsp;·&nbsp; Built with curiosity</p>
+  </footer>
+
+  <!-- ══ TOAST ══ -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
